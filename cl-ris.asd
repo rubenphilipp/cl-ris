@@ -14,10 +14,8 @@
 ;;; CREATED
 ;;; 2025-03-03
 ;;;
-;;; $$ Last modified:  22:55:08 Mon Mar  3 2025 CET
+;;; $$ Last modified:  23:57:23 Mon Mar  3 2025 CET
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(in-package :cl-user)
 
 (defsystem "cl-ris"
   :description "Common Lisp parsing library for RIS-files."
