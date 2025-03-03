@@ -1,6 +1,28 @@
 #+title: cl-ris
 #+author: Ruben Philipp
 
-This is a simple Common Lisp parsing library for the [[https://en.wikipedia.org/wiki/RIS_(file_format)][RIS]] file format, a simple
+This is a simple Common Lisp parsing library for the [[https://en.wikipedia.org/wiki/RIS_(file_format)][RIS]] file format[fn:1], a simple
 format widely used for the exchange of citation data.
 
+* Usage
+
+TODO
+
+** Dependencies
+
+- alexandria
+- [[https://github.com/edicl/cl-ppcre][cl-ppcre]]
+
+
+
+* Nota Bene
+
+Please note that this library is at an early stage of development.  Thus the API
+is likely to change. 
+
+* Footnotes
+
+[fn:1] Details on the specifications in form of a tag map can be found here:
+https://github.com/aurimasv/translators/wiki/RIS-Tag-Map and here:
+https://github.com/zotero/translators/blob/master/RIS.js.  Also consider this:
+https://web.archive.org/web/20100726175744/http://www.refman.com/support/risformat_reftypes.asp
