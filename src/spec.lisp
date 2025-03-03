@@ -14,7 +14,7 @@
 ;;; related fields.
 ;;;
 ;;;
-;;; $$ Last modified:  00:02:02 Tue Mar  4 2025 CET
+;;; $$ Last modified:  00:10:39 Tue Mar  4 2025 CET
 ;;; ****
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -210,7 +210,22 @@
                    (test #'equal))
   (assoc tag tag-list :test test))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;; RIS format
+
+(defparameter *tag-end* "  ")
+
+(defparameter *end-hyphen* #\-)
+
+(defparameter *newline* #\newline)
+
+(defparameter *end-record* "ER")
+
+(defparameter *end-record-full* (format nil "~a~a~a ~%"
+                                        *end-record* *tag-end* *end-hyphen*))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

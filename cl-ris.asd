@@ -14,7 +14,7 @@
 ;;; CREATED
 ;;; 2025-03-03
 ;;;
-;;; $$ Last modified:  00:02:42 Tue Mar  4 2025 CET
+;;; $$ Last modified:  00:03:08 Tue Mar  4 2025 CET
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defsystem "cl-ris"
@@ -28,9 +28,7 @@
                "cl-ppcre")
   :pathname "src/"
   :components ((:file "package")
-               (:file "spec")
-               ;; to be cont'd...
-               ))
+               (:file "spec")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
