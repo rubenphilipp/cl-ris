@@ -14,7 +14,7 @@
 ;;; related fields.
 ;;;
 ;;;
-;;; $$ Last modified:  23:54:18 Mon Mar  3 2025 CET
+;;; $$ Last modified:  00:02:02 Tue Mar  4 2025 CET
 ;;; ****
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -29,68 +29,68 @@
 ;;; Cf. https://en.wikipedia.org/wiki/RIS_(file_format)#Type_of_reference
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defparameter *import-type-map*
-  '(("ABST" . "abstract")
-    ("ADVS" . "audiovisual-material")
-    ("AGGR" . "aggregated-database")
-    ("ANCIENT" . "ancient-text")
-    ("ART" . "artwork")
-    ("BILL" . "bill-resolutions")
-    ("BLOG" . "blog")
-    ("BOOK" . "book-whole")
-    ("CASE" . "legal-case")
-    ("CHAP" . "book-section")
-    ("CHART" . "chart")
-    ("CLSWK" . "classical-work")
-    ("COMP" . "computer-program")
-    ("CONF" . "conference-proceedings")
-    ("CPAPER" . "conference-paper")
-    ("CTLG" . "catalog")
-    ("DATA" . "data-file-dataset")
-    ("DBASE" . "online-database")
-    ("DICT" . "dictionary")
-    ("EBOOK" . "electronic-book")
-    ("ECHAP" . "electronic-book-section")
-    ("EDBOOK" . "edited-book")
-    ("EJOUR" . "electronic-article")
-    ("ELEC" . "web-page")
-    ("ENCYC" . "encyclopedia")
-    ("EQUA" . "equation")
-    ("FIGURE" . "figure")
-    ("GEN" . "generic")
-    ("GOVDOC" . "government-document")
-    ("GRNT" . "grant")
-    ("HEAR" . "hearing")
-    ("ICOMM" . "internet-communication")
-    ("INPR" . "in-press-article")
-    ("INTV" . "interview")
-    ("JFULL" . "journal-full")
-    ("JOUR" . "journal-article")
-    ("LEGAL" . "legal-rule")
-    ("MANSCPT" . "manuscript")
-    ("MAP" . "map")
-    ("MGZN" . "magazine-article")
-    ("MPCT" . "film-or-broadcast")
-    ("MULTI" . "online-multimedia")
-    ("MUSIC" . "music-score")
-    ("NEWS" . "newspaper-article")
-    ("PAMP" . "pamphlet")
-    ("PAT" . "patent")
-    ("PCOMM" . "personal-communication")
-    ("POD" . "podcast")
-    ("PRESS" . "press-release")
-    ("RPRT" . "report")
-    ("SER" . "serial-book-monograph")
-    ("SLIDE" . "slide")
-    ("SOUND" . "sound-recording")
-    ("STAND" . "standard")
-    ("STAT" . "statute")
-    ("STD" . "generic")
-    ("THES" . "thesis-dissertation")
-    ("UNBILL" . "unenacted-bill")
-    ("UNPB" . "unpublished-work")
-    ("UNPD" . "unpublished-work")
-    ("VIDEO" . "video-recording")
-    ("WEB" . "web-page")))
+  '(("ABST" "abstract")
+    ("ADVS" "audiovisual-material")
+    ("AGGR" "aggregated-database")
+    ("ANCIENT" "ancient-text")
+    ("ART" "artwork")
+    ("BILL" "bill-resolutions")
+    ("BLOG" "blog")
+    ("BOOK" "book-whole")
+    ("CASE" "legal-case")
+    ("CHAP" "book-section")
+    ("CHART" "chart")
+    ("CLSWK" "classical-work")
+    ("COMP" "computer-program")
+    ("CONF" "conference-proceedings")
+    ("CPAPER" "conference-paper")
+    ("CTLG" "catalog")
+    ("DATA" "data-file-dataset")
+    ("DBASE" "online-database")
+    ("DICT" "dictionary")
+    ("EBOOK" "electronic-book")
+    ("ECHAP" "electronic-book-section")
+    ("EDBOOK" "edited-book")
+    ("EJOUR" "electronic-article")
+    ("ELEC" "web-page")
+    ("ENCYC" "encyclopedia")
+    ("EQUA" "equation")
+    ("FIGURE" "figure")
+    ("GEN" "generic")
+    ("GOVDOC" "government-document")
+    ("GRNT" "grant")
+    ("HEAR" "hearing")
+    ("ICOMM" "internet-communication")
+    ("INPR" "in-press-article")
+    ("INTV" "interview")
+    ("JFULL" "journal-full")
+    ("JOUR" "journal-article")
+    ("LEGAL" "legal-rule")
+    ("MANSCPT" "manuscript")
+    ("MAP" "map")
+    ("MGZN" "magazine-article")
+    ("MPCT" "film-or-broadcast")
+    ("MULTI" "online-multimedia")
+    ("MUSIC" "music-score")
+    ("NEWS" "newspaper-article")
+    ("PAMP" "pamphlet")
+    ("PAT" "patent")
+    ("PCOMM" "personal-communication")
+    ("POD" "podcast")
+    ("PRESS" "press-release")
+    ("RPRT" "report")
+    ("SER" "serial-book-monograph")
+    ("SLIDE" "slide")
+    ("SOUND" "sound-recording")
+    ("STAND" "standard")
+    ("STAT" "statute")
+    ("STD" "generic")
+    ("THES" "thesis-dissertation")
+    ("UNBILL" "unenacted-bill")
+    ("UNPB" "unpublished-work")
+    ("UNPD" "unpublished-work")
+    ("VIDEO" "video-recording")
+    ("WEB" "web-page")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; derive export type map from import type map
@@ -105,46 +105,11 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; does the type exist?
-(defun ty-type? (ty &key (map *import-type-map*)
+(defun ty-type? (ty &key
+                      (types *import-type-map*)
                       (test #'equal))
-  (alexandria:assoc-value map ty :test test))
+  (assoc ty types :test test))
 
-
-(defun translate-type (typestring &key
-                                    map
-                                    ;; assoc test-function
-                                    (test #'equal)
-                                    (warn? t))
-  (unless (alist-p map)
-    (error "translate-type: map is not of type alist, but a ~a." (type-of map)))
-  (let ((found (alexandria:assoc-value map typestring :test test)))
-    (if (null found)
-        (progn
-          (when warn?
-            (warn "translate-type: typestring \"~a\" not found in map."
-                  typestring))
-          typestring)
-        found)))
-
-
-;;; more specific
-#|
-(import-type "WEB")
-;; => "web-page"
-|#
-(defun import-type (typestring &key (warn? t))
-  (translate-type typestring
-                  :warn? warn?
-                  :map *import-type-map*))
-
-#|
-(export-type "generic")
-;; => "GEN"
-|#
-(defun export-type (typestring &key (warn? t))
-  (translate-type typestring
-                  :warn? warn?
-                  :map *export-type-map*))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Tag list
