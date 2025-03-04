@@ -15,7 +15,7 @@
 ;;; CLASS HIERARCHY
 ;;;
 ;;;
-;;; $$ Last modified:  23:14:03 Tue Mar  4 2025 CET
+;;; $$ Last modified:  23:48:06 Tue Mar  4 2025 CET
 ;;; ****
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -103,6 +103,64 @@ data: #<HASH-TABLE :TEST EQUAL :COUNT 8 {7013A27CF3}>
             collect
             (make-resource-from-string r-proc :warn? warn?))))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; ****f* package/parse-from-fril
+;;; AUTHOR
+;;; Ruben Philipp <me@rubenphilipp.com>
+;;;
+;;; CREATED
+;;; 2025-03-03
+;;; 
+;;; DESCRIPTION
+;;; Parse resource objects from an .ris file.
+;;; For more detail cf. parse-from-string. 
+;;;
+;;; ARGUMENTS
+;;; - The path to an .ris-file.
+;;; 
+;;; OPTIONAL ARGUMENTS
+;;; - :warn?. When T, warnings will be issued during parsing (e.g. when a type
+;;;   does not exist in the RIS standard). 
+;;; 
+;;; RETURN VALUE
+;;; A list with resource-objects.
+;;;
+;;; EXAMPLE
+#|
+(parse-from-file "examples/ex1.ris")
+
+;; =>
+(
+RESOURCE: type: JOUR
+NAMED-OBJECT: id: NIL, tag: NIL, 
+data: #<HASH-TABLE :TEST EQUAL :COUNT 11 {7036B920E3}>
+**********
+
+ 
+RESOURCE: type: THES
+NAMED-OBJECT: id: NIL, tag: NIL, 
+data: #<HASH-TABLE :TEST EQUAL :COUNT 8 {7036D1A893}>
+**********
+
+ 
+RESOURCE: type: CHAP
+NAMED-OBJECT: id: NIL, tag: NIL, 
+data: #<HASH-TABLE :TEST EQUAL :COUNT 12 {7036D1F7B3}>
+**********
+
+ 
+RESOURCE: type: CHAP
+NAMED-OBJECT: id: NIL, tag: NIL, 
+data: #<HASH-TABLE :TEST EQUAL :COUNT 16 {7036D37843}>
+**********
+)
+|#
+;;; SYNOPSIS
+(defun parse-from-file (file &key (warn? t))
+  ;;; ****
+  (let ((string (read-file-into-string file)))
+    (parse-from-string string :warn? warn?)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
