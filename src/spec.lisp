@@ -14,7 +14,7 @@
 ;;; related fields.
 ;;;
 ;;;
-;;; $$ Last modified:  00:10:39 Tue Mar  4 2025 CET
+;;; $$ Last modified:  22:53:58 Tue Mar  4 2025 CET
 ;;; ****
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -218,12 +218,14 @@
 
 (defparameter *end-hyphen* #\-)
 
-(defparameter *newline* #\newline)
+(defparameter *newline* "\\r\\n?|\\n")
 
-(defparameter *end-record* "ER")
+(defparameter *end-record-tag* "ER")
 
-(defparameter *end-record-full* (format nil "~a~a~a ~%"
-                                        *end-record* *tag-end* *end-hyphen*))
+(defparameter *end-record* (format nil "~a~a~a "
+                                   *end-record-tag* *tag-end* *end-hyphen*))
+
+(defparameter *tag-pattern* "^([A-Z0-9]{2})  - ")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
