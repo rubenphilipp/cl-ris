@@ -15,7 +15,7 @@
 ;;; CLASS HIERARCHY
 ;;;
 ;;;
-;;; $$ Last modified:  23:48:06 Tue Mar  4 2025 CET
+;;; $$ Last modified:  15:16:44 Wed Mar  5 2025 CET
 ;;; ****
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -105,7 +105,7 @@ data: #<HASH-TABLE :TEST EQUAL :COUNT 8 {7013A27CF3}>
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; ****f* package/parse-from-fril
+;;; ****f* package/parse-from-file
 ;;; AUTHOR
 ;;; Ruben Philipp <me@rubenphilipp.com>
 ;;;

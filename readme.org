@@ -13,6 +13,66 @@ TODO
 - alexandria
 - [[https://github.com/edicl/cl-ppcre][cl-ppcre]]
 
+** Example
+
+First, load the ~cl-ris~-package:
+
+#+begin_src lisp
+(ql:quickload :cl-ris)
+#+end_src
+
+*** Parse a RIS-file to a list of resource objects
+
+#+begin_src lisp
+(ris::parse-from-file "examples/ex1.ris")
+
+;; =>
+#|
+(
+RESOURCE: type: JOUR
+NAMED-OBJECT: id: NIL, tag: NIL, 
+data: #<HASH-TABLE :TEST EQUAL :COUNT 11 {7036B920E3}>
+,**********
+
+ 
+RESOURCE: type: THES
+NAMED-OBJECT: id: NIL, tag: NIL, 
+data: #<HASH-TABLE :TEST EQUAL :COUNT 8 {7036D1A893}>
+,**********
+
+ 
+RESOURCE: type: CHAP
+NAMED-OBJECT: id: NIL, tag: NIL, 
+data: #<HASH-TABLE :TEST EQUAL :COUNT 12 {7036D1F7B3}>
+,**********
+
+ 
+RESOURCE: type: CHAP
+NAMED-OBJECT: id: NIL, tag: NIL, 
+data: #<HASH-TABLE :TEST EQUAL :COUNT 16 {7036D37843}>
+,**********
+)
+|#
+#+end_src
+
+*** Write a resource-object to a string
+
+#+begin_quote
+(let ((res (ris::make-resource-from-string "TY  - JOUR
+TI  - »Aus barer organischer Bedürftigkeit«. Die Wüste als Indikator menschlicher Intelligenz
+AU  - Noll, Chaim
+T2  - Sinn und Form
+DA  - 2022///
+PY  - 2022
+VL  - 74
+IS  - 3
+SP  - 419
+EP  - 422
+LA  - de
+KW  - #nosource
+ER  - ")))
+(ris::resource->string res))
+#+end_quote
 
 
 * Nota Bene
