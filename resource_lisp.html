@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-type" content="text/html; charset=ISO-8859-1" />
+<link rel="stylesheet" href="./robodoc.css" type="text/css" />
+<script src="./robodoc.js"></script>
+<title>resource.lisp</title>
+<!-- Source: ./src/resource.lisp -->
+<!-- Generated with ROBODoc Version 4.99.45 (Mar  5 2025) -->
+</head>
+<body>
+<div id="logo">
+<a name="robo_top_of_doc"></a>
+</div> <!-- logo -->
+<div id="navigation">
+<a class="menuitem" href="./toc_index.html#top">Table of Contents</a>
+<a class="menuitem" href="./robo_sourcefiles.html#top">Sourcefiles</a>
+<a class="menuitem" href="./masterindex.html#top">Index</a>
+<a class="menuitem" href="./robo_classes.html#top">Classes</a>
+<a class="menuitem" href="./robo_functions.html#top">Functions</a>
+<a class="menuitem" href="./robo_methods.html#top">Methods</a>
+</div> <!-- navigation -->
+<div id="content">
+<hr />
+<a name="resource2fget2ddata"></a>
+<a name="robo3"></a><h2>resource/get-data [ Methods ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="./robo_methods.html#robo_top_of_doc">Methods</a> ]</p>
+<p class="item_name">AUTHOR</p>
+<pre> Ruben Philipp &lt;me@rubenphilipp.com&gt;
+</pre>
+<p class="item_name">CREATED</p>
+<pre> 2025-03-03
+</pre>
+<p class="item_name">DESCRIPTION</p>
+<pre> Returns the data of a given data field in the resource data-slot. 
+</pre>
+<p class="item_name">ARGUMENTS</p>
+<pre> - The resource object.
+ - The key to the data field. 
+</pre>
+<p class="item_name">RETURN VALUE</p>
+<pre> The value of the data field (if exists). 
+</pre>
+<p class="item_name">EXAMPLE</p>
+<pre class="source">(let ((res (<a href="#robo4">make-resource</a> "CHAP"
+                          :data '(("AU" . "Müller, Herta")
+                                  ("TI" . "Das Auge täusche im Lidschlag")))))
+  (<strong>get-data</strong> res "TI"))
+;; =&gt; "Das Auge täusche im Lidschlag"
+</pre>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">(defmethod <strong>get-data</strong> ((obj resource) key)
+</pre>
+
+<hr />
+<a name="resource2fmake2dresource"></a>
+<a name="robo4"></a><h2>resource/make-resource [ Functions ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="./robo_functions.html#robo_top_of_doc">Functions</a> ]</p>
+<p class="item_name">AUTHOR</p>
+<pre> Ruben Philipp &lt;me@rubenphilipp.com&gt;
+</pre>
+<p class="item_name">CREATED</p>
+<pre> 2025-03-03
+</pre>
+<p class="item_name">DESCRIPTION</p>
+<pre> Helper function. 
+</pre>
+<p class="item_name">ARGUMENTS</p>
+<pre> - The type of the object as a string. E.g. "CHAP". 
+</pre>
+<p class="item_name">OPTIONAL ARGUMENTS</p>
+<pre> - :data. The data of the resource. Either a hash-table or an alist. 
+</pre>
+<p class="item_name">RETURN VALUE</p>
+<pre> The new resource object. 
+</pre>
+<p class="item_name">EXAMPLE</p>
+<pre class="source">(<strong>make-resource</strong> "CHAP" :data '(("AU" . "Müller, Herta") ; ; ; ;
+("TI" . "Das Auge täusche im Lidschlag"))) ; ; ; ;
+</pre>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">(defun <strong>make-resource</strong> (type &amp;key data)
+</pre>
+
+<hr />
+<a name="resource2fmake2dresource2dfrom2dstring"></a>
+<a name="robo5"></a><h2>resource/make-resource-from-string [ Functions ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="./robo_functions.html#robo_top_of_doc">Functions</a> ]</p>
+<p class="item_name">AUTHOR</p>
+<pre> Ruben Philipp &lt;me@rubenphilipp.com&gt;
+</pre>
+<p class="item_name">CREATED</p>
+<pre> 2025-03-03
+</pre>
+<p class="item_name">DESCRIPTION</p>
+<p class="item_name">ARGUMENTS</p>
+<p class="item_name">OPTIONAL ARGUMENTS</p>
+<p class="item_name">RETURN VALUE</p>
+<p class="item_name">EXAMPLE</p>
+<pre class="source">(let ((res (<strong>make-resource-from-string</strong> "TY  - JOUR
+TI  - »Aus barer organischer Bedürftigkeit«. Die Wüste als Indikator menschlicher Intelligenz
+AU  - Noll, Chaim
+T2  - Sinn und Form
+DA  - 2022///
+PY  - 2022
+VL  - 74
+IS  - 3
+SP  - 419
+EP  - 422
+LA  - de
+KW  - #nosource
+ER  - ")))
+  (<a href="#robo3">get-data</a> res "T2"))
+
+;; =&gt; "Sinn und Form"
+</pre>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">(defun <strong>make-resource-from-string</strong> (string &amp;key (warn? t))
+</pre>
+
+<hr />
+<a name="resource2fresource2d3estring"></a>
+<a name="robo6"></a><h2>resource/resource-&gt;string [ Methods ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="./robo_methods.html#robo_top_of_doc">Methods</a> ]</p>
+<p class="item_name">AUTHOR</p>
+<pre> Ruben Philipp &lt;me@rubenphilipp.com&gt;
+</pre>
+<p class="item_name">CREATED</p>
+<pre> 2025-03-03
+</pre>
+<p class="item_name">DESCRIPTION</p>
+<pre> This method returns a RIS string from a resource object. 
+</pre>
+<p class="item_name">ARGUMENTS</p>
+<pre> A resource object. 
+</pre>
+<p class="item_name">RETURN VALUE</p>
+<pre> A string containing the RIS data. 
+</pre>
+<p class="item_name">EXAMPLE</p>
+<pre class="source">(let ((res (<a href="#robo5">make-resource-from-string</a> "TY  - JOUR
+TI  - »Aus barer organischer Bedürftigkeit«. Die Wüste als Indikator menschlicher Intelligenz
+AU  - Noll, Chaim
+T2  - Sinn und Form
+DA  - 2022///
+PY  - 2022
+VL  - 74
+IS  - 3
+SP  - 419
+EP  - 422
+LA  - de
+KW  - #nosource
+ER  - ")))
+  (<strong>resource-&gt;string</strong> res))
+
+;; =&gt;
+"TY  - JOUR
+TI  - »Aus barer organischer Bedürftigkeit«. Die Wüste als Indikator menschlicher Intelligenz
+AU  - Noll, Chaim
+T2  - Sinn und Form
+DA  - 2022///
+PY  - 2022
+VL  - 74
+IS  - 3
+SP  - 419
+EP  -...[sly-elided string of length 237]"
+</pre>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">(defmethod <strong>resource-&gt;string</strong> ((rs resource))
+</pre>
+
+<hr />
+<a name="resource2fset2ddata"></a>
+<a name="robo7"></a><h2>resource/set-data [ Methods ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="./robo_methods.html#robo_top_of_doc">Methods</a> ]</p>
+<p class="item_name">AUTHOR</p>
+<pre> Ruben Philipp &lt;me@rubenphilipp.com&gt;
+</pre>
+<p class="item_name">CREATED</p>
+<pre> 2025-03-03
+</pre>
+<p class="item_name">DESCRIPTION</p>
+<pre> Sets the data of the resource object. 
+</pre>
+<p class="item_name">ARGUMENTS</p>
+<pre> - A resource object.
+ - The key of the data field.
+ - The new value.
+</pre>
+<p class="item_name">RETURN VALUE</p>
+<pre> The new value. 
+</pre>
+<p class="item_name">EXAMPLE</p>
+<pre class="source">(let ((res (<a href="#robo4">make-resource</a>
+         "CHAP"
+         :data '(("AU" . "Müller, Herta")
+                 ("TI" . "Das Auge täusche im Lidschlag")))))
+  (<strong>set-data</strong> res "DA" "1991")
+  (<a href="#robo3">get-data</a> res "DA"))
+;; =&gt; "1991"
+</pre>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">(defmethod <strong>set-data</strong> ((obj resource) key value)
+</pre>
+
+<hr />
+<a name="resource2fupdate"></a>
+<a name="robo8"></a><h2>resource/update [ Methods ]</h2>
+
+<p>[ <a href="#robo_top_of_doc">Top</a> ] [ <a href="./robo_methods.html#robo_top_of_doc">Methods</a> ]</p>
+<p class="item_name">AUTHOR</p>
+<pre> Ruben Philipp &lt;me@rubenphilipp.com&gt;
+</pre>
+<p class="item_name">CREATED</p>
+<pre> 2025-03-03
+</pre>
+<p class="item_name">DESCRIPTION</p>
+<pre> This method updates the slots of a resource object
+</pre>
+<p class="item_name">ARGUMENTS</p>
+<pre> A resource object. 
+</pre>
+<p class="item_name">RETURN VALUE</p>
+<pre> The updated resource object. 
+</pre>
+<p class="item_name">SYNOPSIS</p>
+<pre class="source">(defmethod <strong>update</strong> ((rs resource))
+</pre>
+
+</div> <!-- content -->
+<div id="footer">
+<p>Generated from ./src/resource.lisp with <a href="http://www.xs4all.nl/~rfsber/Robo/robodoc.html">ROBODoc</a> V4.99.45 on 2025-03-05 23:43:45</p>
+</div> <!-- footer -->
+</body>
+</html>
