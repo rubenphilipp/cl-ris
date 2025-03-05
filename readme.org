@@ -55,7 +55,7 @@ data: #<HASH-TABLE :TEST EQUAL :COUNT 16 {7036D37843}>
 
 *** Write a resource-object to a string
 
-#+begin_quote
+#+begin_src lisp
 (let ((res (ris::make-resource-from-string "TY  - JOUR
 TI  - »Aus barer organischer Bedürftigkeit«. Die Wüste als Indikator menschlicher Intelligenz
 AU  - Noll, Chaim
@@ -69,8 +69,8 @@ EP  - 422
 LA  - de
 KW  - #nosource
 ER  - ")))
-(ris::resource->string res))
-#+end_quote
+  (ris::resource->string res))
+#+end_src
 
 
 * Nota Bene
