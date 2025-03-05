@@ -1,7 +1,7 @@
 #+title: cl-ris
 #+author: Ruben Philipp
 
-This is a simple Common Lisp parsing library for the [[https://en.wikipedia.org/wiki/RIS_(file_format)][RIS]] file format[fn:1], a
+This is a simple Common Lisp parsing library for the [[https://en.wikipedia.org/wiki/RIS_(file_format)][RIS]] file format,[fn:1] a
 simple format widely used for the exchange of citation data.
 
 * Usage
