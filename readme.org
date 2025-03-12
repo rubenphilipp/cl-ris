@@ -22,7 +22,7 @@ First, load the ~cl-ris~-package:
 *** Parse a RIS-file to a list of resource objects
 
 #+begin_src lisp
-(ris::parse-from-file "examples/ex1.ris")
+(ris:parse-from-file "examples/ex1.ris")
 
 ;; =>
 #|
@@ -56,7 +56,7 @@ data: #<HASH-TABLE :TEST EQUAL :COUNT 16 {7036D37843}>
 *** Write a resource-object to a string
 
 #+begin_src lisp
-(let ((res (ris::make-resource-from-string "TY  - JOUR
+(let ((res (ris:make-resource-from-string "TY  - JOUR
 TI  - »Aus barer organischer Bedürftigkeit«. Die Wüste als Indikator menschlicher Intelligenz
 AU  - Noll, Chaim
 T2  - Sinn und Form
@@ -69,7 +69,7 @@ EP  - 422
 LA  - de
 KW  - #nosource
 ER  - ")))
-  (ris::resource->string res))
+  (ris:resource->string res))
 #+end_src
 
 

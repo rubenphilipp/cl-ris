@@ -14,7 +14,7 @@
 ;;; CREATED
 ;;; 2025-03-03
 ;;;
-;;; $$ Last modified:  20:47:23 Tue Mar  4 2025 CET
+;;; $$ Last modified:  11:59:50 Wed Mar 12 2025 CET
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (in-package :cl-user)
@@ -32,7 +32,15 @@
   (:import-from
    :cl-ppcre
    :scan
-   :split))
+   :split)
+  (:export
+   #:parse-from-string
+   #:parse-from-file
+   #:make-resource
+   #:make-resource-from-string
+   #:resource->string
+   #:get-data
+   #:set-data))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
